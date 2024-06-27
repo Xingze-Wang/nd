@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoteDog - Harness the Power of Your Notes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="light">
+    <header>
+        <div class="header-title">NoteDog</div>
+        <div class="header-controls">
+            <div class="user-profile">
+                <div id="user-avatar" class="avatar"></div>
+                <div class="dropdown-content">
+                    <a href="#" id="profile-link">Profile</a>
+                    <a href="#" id="logout-link">Logout</a>
+                </div>
+            </div>
+            <div class="theme-toggle">
+                <input type="checkbox" id="theme-toggle" class="theme-toggle-input">
+                <label for="theme-toggle" class="theme-toggle-label"></label>
+            </div>
+        </div>
+    </header>
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Overview')">Overview</button>
+        <button class="tablinks" onclick="openTab(event, 'Notes')">Notes</button>
+        <button class="tablinks" onclick="openTab(event, 'ToDo')">To-Do</button>
+        <button class="tablinks" onclick="openTab(event, 'PastNotes')">Past Notes</button>
+        <button class="tablinks" onclick="openTab(event, 'QnA')">Q&A</button>
+    </div>
+
+    <div id="Overview" class="tabcontent">
+        <main>
+            <section>
+                <h2>Welcome to NoteDog</h2>
+                <p>NoteDog is your ultimate note-taking companion, equipped with advanced AI-powered features to help you organize, summarize, and act on your notes efficiently.</p>
+                <h2>Technical Advancements</h2>
+                <h3>1. AI-Powered Summarization</h3>
+                <p>NoteDog uses cutting-edge AI models to summarize your notes with precision. This allows you to quickly grasp the key points without sifting through all the details.</p>
+                <h3>2. Voice Recognition</h3>
+                <p>Our voice recognition feature lets you take notes on the go. Just speak, and NoteDog will convert your speech into text in real-time.</p>
+                <h3>3. Integrated Task Management</h3>
+                <p>Transform your notes into actionable to-do lists. NoteDog can extract tasks from your notes, helping you stay organized and productive.</p>
+                <h3>4. Image and File Uploads</h3>
+                <p>Enhance your notes with images and documents. NoteDog supports uploading various file types, ensuring all your information is in one place.</p>
+            </section>
+        </main>
+    </div>
+
+    <div id="Notes" class="tabcontent">
+        <main>
+            <section id="notes-section">
+                <h2>Notes</h2>
+                <textarea id="notes-input" placeholder="Enter your notes here..."></textarea>
+                <div class="button-group">
+                    <button id="voice-input" onclick="toggleVoiceInput()">Voice Input</button>
+                    <button id="summarize" onclick="summarizeNotes()">Summarize</button>
+                    <button id="upload-image" onclick="openModal()">Upload Image</button>
+                    <button id="save-notes" onclick="saveNotes()">Save Notes</button>
+                    <button id="export-notes" onclick="exportNotes()">Export Notes</button>
+
+                </div>
+                <input type="file" id="file-upload" accept=".txt, .pdf" multiple>
+            </section>
+            <section id="summary-section">
+                <h2>Summarized Notes</h2>
+                <div id="summarized-notes"></div>
+                <button id="convert-to-tasks" onclick="convertToTasks()">Convert to Tasks</button>
+            </section>
+        </main>
+    </div>
+
+    <div id="ToDo" class="tabcontent">
+        <main>
+            <section id="todo-section">
+                <h2>To-Do List</h2>
+                <ul id="todo-list"></ul>
+                <div class="button-group">
+                    <input type="text" id="todo-input" placeholder="Add a new task...">
+                    <button id="add-task" onclick="addTask()">Add Task</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="QnA" class="tabcontent">
+        <main>
+            <section id="qa-section">
+                <h2>Ask a Question</h2>
+                <textarea id="question-input" placeholder="Enter your question here..."></textarea>
+                <button id="ask-question" onclick="askQuestion()">Ask</button>
+                <div id="qa-results"></div>
+            </section>
+        </main>
+    </div>
+
+    <div id="PastNotes" class="tabcontent">
+        <main>
+            <section id="past-notes-section">
+                <h2>Past Notes</h2>
+                <ul id="notes-list" class="notes-list"></ul>
+            </section>
+        </main>
+    </div>
+
+    <!-- The Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Upload and Preview Image</h2>
+            <input type="file" id="image-upload" accept="image/*" onchange="previewImage()">
+            <img id="image-preview" src="#" alt="Image Preview" style="display: none;">
+            <button id="upload-image-confirm" onclick="uploadImage()">Upload</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
